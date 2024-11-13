@@ -1,6 +1,8 @@
 ## 문제
 
 selected 배열에 포함된 data 배열의 원소들을 왼쪽으로 한 칸씩 옮기는 콘솔 프로그램을 작성해주세요.
+
+```
 예) data = [1, 2, 3], selected = [1], data' = [1, 2, 3]
 예) data = [1, 2, 3], selected = [2], data' = [2, 1, 3]
 예) data = [1, 2, 3], selected = [3], data' = [1, 3, 2]
@@ -11,6 +13,7 @@ selected 배열에 포함된 data 배열의 원소들을 왼쪽으로 한 칸씩
 예) data = [1, 2, 3], selected = [2, 3], data' = [2, 3, 1]
 예) data = [1, 2, 3], selected = [3, 2], data' = [2, 3, 1]
 예) data = [1, 2, 3], selected = [1, 2, 3], data' = [1, 2, 3]
+```
 
 입력값에 오류는 없다고 가정합니다.
 selected는 data의 부분집합 입니다.
