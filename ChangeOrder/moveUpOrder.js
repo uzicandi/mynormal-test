@@ -1,3 +1,4 @@
+"use strict";
 var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
         if (ar || !(i in from)) {
@@ -7,6 +8,12 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
+Object.defineProperty(exports, "__esModule", { value: true });
+var readline = require("readline");
+var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
 function moveUpOrder(data, selected) {
     // 에러 핸들링: 입력 검증
     if (!Array.isArray(data) || !Array.isArray(selected)) {
@@ -41,4 +48,18 @@ function moveUpOrder(data, selected) {
     });
     return newData;
 }
-console.log(moveUpOrder([1, 2, 3, 4], [2, 4]));
+rl.question('data 배열을 입력하세요 (예: 1,2,3,4): ', function (dataInput) {
+    var data = dataInput.split(',').map(Number);
+    rl.question('selected 배열을 입력하세요 (예: 2,4): ', function (selectedInput) {
+        var selected = selectedInput.split(',').map(Number);
+        try {
+            var result = moveUpOrder(data, selected);
+            console.log('결과:', result);
+        }
+        catch (error) {
+            console.error('에러:', error.message);
+        }
+        rl.close();
+    });
+});
+// console.log(moveUpOrder([1, 2, 3, 4], [2, 4])); // [2,1,4,3]

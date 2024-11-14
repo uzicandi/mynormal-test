@@ -1,5 +1,11 @@
+import * as readline from 'readline';
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
 function moveUpOrder(data: number[], selected: number[]) {
-  // 에러 핸들링: 입력 검증
   if (!Array.isArray(data) || !Array.isArray(selected)) {
     throw new Error('data와 selected는 배열이어야 합니다.');
   }
@@ -41,4 +47,19 @@ function moveUpOrder(data: number[], selected: number[]) {
   return newData;
 }
 
-console.log(moveUpOrder([1, 2, 3, 4], [2, 4])); // [2,1,4,3]
+rl.question('data 배열을 입력하세요 (예: 1,2,3,4): ', (dataInput) => {
+  const data = dataInput.split(',').map(Number);
+
+  rl.question('selected 배열을 입력하세요 (예: 2,4): ', (selectedInput) => {
+    const selected = selectedInput.split(',').map(Number);
+
+    try {
+      const result = moveUpOrder(data, selected);
+      console.log('결과:', result);
+    } catch (error) {
+      console.error('에러:', error.message);
+    }
+
+    rl.close();
+  });
+});
